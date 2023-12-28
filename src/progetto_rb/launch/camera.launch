@@ -1,0 +1,7 @@
+<launch>
+    <!-- Avvia il nodo della camera -->
+    <node name="camera_node" pkg="vision_pkg" type="camera_node.py" output="screen" />
+
+    <!-- Avvia il nodo di controllo del braccio -->
+    <node name="arm_control_node" pkg="progetto_rb" type="arm_control_node.py" output="screen" />
+</launch>

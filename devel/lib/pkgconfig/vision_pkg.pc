@@ -1,0 +1,8 @@
+prefix=/Users/alessiature/progetto_workspace/devel
+
+Name: vision_pkg
+Description: Description of vision_pkg
+Version: 0.0.0
+Cflags: -I/Users/alessiature/progetto_workspace/devel/include
+Libs: -L${prefix}/lib 
+Requires: 
