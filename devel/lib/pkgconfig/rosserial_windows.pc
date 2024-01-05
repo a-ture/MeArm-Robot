@@ -1,8 +1,0 @@
-prefix=/Users/alessiature/progetto_workspace/devel
-
-Name: rosserial_windows
-Description: Description of rosserial_windows
-Version: 0.9.2
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

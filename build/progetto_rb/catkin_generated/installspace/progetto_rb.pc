@@ -1,8 +1,0 @@
-prefix=/Users/alessiature/progetto_workspace/install
-
-Name: progetto_rb
-Description: Description of progetto_rb
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
