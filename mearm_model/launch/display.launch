@@ -1,12 +1,17 @@
+<?xml version="1.0"?>
 <launch>
-  <arg name="model" default="$(find mearm_model)/urdf/robot.urdf"/>
-  <arg name="gui" default="true" />
-  <arg name="rvizconfig" default="$(find mearm_model)/rviz/urdf.rviz" />
+  <!-- upload urdf -->
+  <param name="robot_description" textfile="$(find mearm_model)/urdf/robot.urdf.xacro" />
 
-  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
-  
-  <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
-  <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mearm_model)/rviz/urdf.rviz" />
+
+  <!-- send joint values -->  
+  <arg name="use_gui" default="true" doc="Should the joint_state_publisher use a GUI for controlling joint states" />
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen" unless="$(arg use_gui)" />
+  <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui" output="screen" if="$(arg use_gui)" />
+
 </launch>
