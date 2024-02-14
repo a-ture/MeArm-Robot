@@ -1,4 +1,0 @@
-<launch>
-  <rosparam file="$(find mearm_model)/config/poses.yaml" command="load" />
-  <node pkg="mearm_model" type="move_servo.py" name="servo_pose_server" output="screen" />
-</launch>

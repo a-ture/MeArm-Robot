@@ -1,0 +1,15 @@
+<launch>
+  <!-- upload urdf -->
+  <param name="robot_description" textfile="$(find mearm_model)/urdf/robot.urdf.xacro" />
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+  <!-- Show in Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mearm_model)/rviz/urdf.rviz" />
+
+  <!-- Filter for joint states -->
+  <node name="joint_states_filter" pkg="mearm_model" type="filter.py" output="screen"/>
+
+  <rosparam file="$(find mearm_model)/config/joint_positions_sets.yaml" command="load" />
+</launch>
