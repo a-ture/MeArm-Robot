@@ -23,13 +23,40 @@ These instructions will get you a copy of the project up and running on your loc
 - [Arduino IDE](https://www.arduino.cc/en/software) for programming the Arduino board.
 - MeArm robot kit assembled with an Arduino compatible board.
 
+## Usage
+
+1. Clone the repository to your local machine:
+    ```bash
+    git clone https://github.com/yourrepository/MeArm_ROS_Arduino.git
+    ```
+
+2. Navigate to the cloned directory:
+    ```bash
+    cd MeArm_ROS_Arduino
+    ```
+
+3. Compile any necessary ROS packages:
+    ```bash
+    catkin_make
+    source devel/setup.bash
+    ```
+
+4. Connect the Arduino to your computer and upload the provided Arduino sketch (`MeArm/mearm.ino`) using the Arduino IDE.
+
+5. Run the ROS nodes for manual control of the robot:
+    ```bash
+    roslaunch mearm_move display.launch
+    rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
+    ```
+
+6. To control the robot using a service:
+    ```bash
+    roslaunch mearm_move service.launch
+    rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
+    rosservice call /select_position_set "set_name: 'set3'"
+    ```
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/yourrepository/MeArm_ROS_Arduino/blob/main/LICENSE) file for details.
 
-## Acknowledgments
-
-- The MeArm community for providing an accessible and open-source robotic arm platform.
-- The ROS community for their extensive documentation and support.
-- Anyone whose code was used as inspiration or directly included in this project.
