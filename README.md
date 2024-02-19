@@ -2,6 +2,8 @@
 
 This project showcases the integration of the MeArm robotic arm with ROS (Robot Operating System) using an Arduino as the intermediary controller. It demonstrates how to control the MeArm robot's servo motors through ROS topics and services, allowing for precise and flexible manipulation tasks.
 
+The project was developed for the course of Robot Programming (2023/2024) in University of Salerno, final paper and presentation can be found in 
+ (`MeArm/doc`)
 ## Project Overview
 
 The goal of this project is to leverage the capabilities of ROS for high-level control while using Arduino for low-level hardware interfacing. This approach enables a modular and scalable system that can be extended for various robotic applications.
@@ -43,11 +45,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 4. Connect the Arduino to your computer and upload the provided Arduino sketch (`MeArm/mearm.ino`) using the Arduino IDE.
 
-5. Run the ROS nodes for manual control of the robot:
+5. Run the ROS nodes for manual control of the robot ():
     ```bash
     roslaunch mearm_move display.launch
     rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
     ```
+This command will open the RViz interface, as we see in figure below:
+![Example Image](img/rviz.png)
 
 6. To control the robot using a service:
     ```bash
